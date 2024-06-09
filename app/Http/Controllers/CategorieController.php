@@ -3,62 +3,62 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Categorie;
 
 class CategorieController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+     public function index()
+        {
+            $categories = Categorie::all();
+            return view('categories.index', compact('categories'));
+        }
+    
+        public function create()
+        {
+            return view('categories.create');
+        }
+    
+        public function store(Request $request)
+        {
+            $request->validate([
+                'libelle' => 'required|string|max:255',
+                'description' => 'nullable|string',
+            ]);
+    
+            Categorie::create($request->all());
+    
+            return redirect()->route('categories.index')->with('success', 'Catégorie ajoutée avec succès.');
+        }
+    
+        public function edit(Categorie $Categorie)
+        {
+            return view('categories.edit', compact('Categorie'));
+        }
+    
+        public function update(Request $request, Categorie $Categorie)
+        {
+            $request->validate([
+                'libelle' => 'required|string|max:255',
+                'description' => 'nullable|string',
+            ]);
+    
+            $Categorie->update($request->all());
+    
+            return redirect()->route('categories.index')->with('success', 'Catégorie mise à jour avec succès.');
+        }
+    
+        public function destroy(Categorie $Categorie)
+        {
+            if ($Categorie->books()->exists()) {
+                return redirect()->route('categories.index')->with('error', 'Des livres sont liés à cette catégorie. Vous ne pouvez pas la supprimer.');
+            }
+    
+            $Categorie->delete();
+    
+            return redirect()->route('categories.index')->with('success', 'Catégorie supprimée avec succès.');
+        }
     }
+    
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-}
