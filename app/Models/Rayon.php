@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rayon extends Model
 {
-    use HasFactory;
-    
+    protected $fillable = ['libelle', 'partie'];
 }
+
+
+
+

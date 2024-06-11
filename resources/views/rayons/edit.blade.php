@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Modifier la catégorie</title>
+    <title>Modifier le rayon</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -36,8 +36,7 @@
             margin-bottom: 5px;
             color: #495057;
         }
-        .form-group input,
-        .form-group textarea {
+        .form-group input {
             width: 100%;
             padding: 10px;
             border: 1px solid #ced4da;
@@ -61,27 +60,44 @@
             background-color: #0056b3;
             border-color: #004085;
         }
+        .link {
+            display: block;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <h1>Modifier la catégorie</h1>
-        <form action="{{ route('categories.update', $Categorie) }}" method="POST">
+        <h1>Modifier le rayon</h1>
+        <a class="link" href="{{ route('rayons.edit', $rayon->id) }}">Modifier</a>
+        <form action="{{ route('rayons.update', $rayon->id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">
                 <label for="libelle">Libellé :</label>
-                <input type="text" name="libelle" id="libelle" class="form-control" value="{{ $Categorie->libelle }}" required>
+                <input type="text" name="libelle" id="libelle" class="form-control" value="{{ $rayon->libelle }}" required>
             </div>
             <div class="form-group">
-                <label for="description">Description :</label>
-                <textarea name="description" id="description" class="form-control">{{ $Categorie->description }}</textarea>
+                <label for="partie">Partie :</label>
+                <input type="text" name="partie" id="partie" class="form-control" value="{{ $rayon->partie }}" required>
             </div>
-            <button type="submit" class="btn btn-primary">Modifier</button>
+            <button type="submit" class="btn btn-primary">Mettre à jour</button>
         </form>
     </div>
 </body>
 </html>
+
+
+
+
+
+
 
 
 
@@ -104,27 +120,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Modifier le rayon</title>
 </head>
 <body>
+    <h1>Modifier le rayon</h1>
+    <a href="{{ route('rayons.edit', $rayon->id) }}">Edit</a>
 
+    <form action="{{ route('rayons.update', $rayon->id) }}" method="POST">
 
-    <h1>Modifier la catégorie</h1>
-    
-    <form action="{{ route('categories.update', $Categorie) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-group">
             <label for="libelle">Libellé :</label>
-            <input type="text" name="libelle" id="libelle" class="form-control" value="{{ $Categorie->libelle }}" required>
+            <input type="text" name="libelle" id="libelle" class="form-control" value="{{ $rayon->libelle }}" required>
         </div>
         <div class="form-group">
-            <label for="description">Description :</label>
-            <textarea name="description" id="description" class="form-control">{{ $Categorie->description }}</textarea>
+            <label for="partie">Partie :</label>
+            <input type="text" name="partie" id="partie" class="form-control" value="{{ $rayon->partie }}" required>
         </div>
-        <button type="submit" class="btn btn-primary">Modifier</button>
+        <button type="submit" class="btn btn-primary">Mettre à jour</button>
     </form>
-
-
 </body>
 </html> --}}

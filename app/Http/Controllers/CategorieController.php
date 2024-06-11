@@ -46,17 +46,41 @@ class CategorieController extends Controller
     
             return redirect()->route('categories.index')->with('success', 'Catégorie mise à jour avec succès.');
         }
-    
-        public function destroy(Categorie $Categorie)
-        {
-            if ($Categorie->books()->exists()) {
-                return redirect()->route('categories.index')->with('error', 'Des livres sont liés à cette catégorie. Vous ne pouvez pas la supprimer.');
+      
+        public function destroy(Categorie $categorie)
+            {
+                if ($categorie->livre()->exists()) {
+                    return redirect()->route('categories.index')->with('error', 'Des livres sont liés à cette catégorie. Vous ne pouvez pas la supprimer.');
+                }
+        
+                $categorie->delete();
+        
+                return redirect()->route('categories.index')->with('success', 'Catégorie supprimée avec succès.');
             }
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+        // public function destroy(Categorie $Categorie)
+        // {
+        //     if ($Categorie->books()->exists()) {
+        //         return redirect()->route('categories.index')->with('error', 'Des livres sont liés à cette catégorie. Vous ne pouvez pas la supprimer.');
+        //     }
     
-            $Categorie->delete();
+        //     $Categorie->delete();
     
-            return redirect()->route('categories.index')->with('success', 'Catégorie supprimée avec succès.');
-        }
+        //     return redirect()->route('categories.index')->with('success', 'Catégorie supprimée avec succès.');
+        // }
     }
     
 

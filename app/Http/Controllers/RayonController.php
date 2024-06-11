@@ -2,63 +2,79 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rayon;
 use Illuminate\Http\Request;
 
 class RayonController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
-        //
+        $rayons = Rayon::all();
+        return view('rayons.index', compact('rayons'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('rayons.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
-    {
-        //
-    }
+{
+    $request->validate([
+        'libelle' => 'required|string|max:255',
+        'partie' => 'required|string|max:255', // Ajoutez la validation pour 'partie'
+    ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+    Rayon::create([
+        'libelle' => $request->input('libelle'),
+        'partie' => $request->input('partie'),
+    ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+    return redirect()->route('rayons.index')->with('success', 'Rayon créé avec succès.');
+}
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+public function destroy($id)
+{
+    $rayon = Rayon::findOrFail($id);
+    $rayon->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    return redirect()->route('rayons.index')->with('success', 'Rayon supprimé avec succès');
+}
+public function edit($id)
+{
+    $rayon = Rayon::findOrFail($id);
+    return view('rayons.edit', compact('rayon'));
+}
+public function update(Request $request, $id)
+{
+    $rayon = Rayon::findOrFail($id);
+    
+    $validatedData = $request->validate([
+        'libelle' => 'required|string|max:255',
+        'partie' => 'required|string|max:255',
+    ]);
+    
+    $rayon->update($validatedData);
+    
+    return redirect()->route('rayons.index')->with('success', 'Rayon updated successfully');
+}
+
+
+
+//modification revenir
+// public function update(Request $request, $id) {
+//     $rayon = Rayon::findOrFail($id); 
+//     $validatedData = $request->validate([
+//         'libelle' => 'required|string|max:255',
+//         'partie' => 'required|string|max:255',
+//     ]);
+// $rayon->update($validatedData);
+// return redirect()->route('rayons.index')->with('success', 'Rayon updated successfully');
+// }
+
+
+
+
+
+    
 }
