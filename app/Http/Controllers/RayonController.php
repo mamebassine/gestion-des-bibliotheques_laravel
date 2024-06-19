@@ -58,23 +58,4 @@ public function update(Request $request, $id)
     
     return redirect()->route('rayons.index')->with('success', 'Rayon updated successfully');
 }
-
-
-
-//modification revenir
-// public function update(Request $request, $id) {
-//     $rayon = Rayon::findOrFail($id); 
-//     $validatedData = $request->validate([
-//         'libelle' => 'required|string|max:255',
-//         'partie' => 'required|string|max:255',
-//     ]);
-// $rayon->update($validatedData);
-// return redirect()->route('rayons.index')->with('success', 'Rayon updated successfully');
-// }
-
-
-
-
-
-    
 }

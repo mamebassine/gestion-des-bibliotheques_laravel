@@ -26,3 +26,4 @@ class Livre extends Model
         return $this->belongsTo(Categorie::class, 'id_categorie');
     }
 }
+

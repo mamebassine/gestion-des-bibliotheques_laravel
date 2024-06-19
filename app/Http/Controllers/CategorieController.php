@@ -46,17 +46,13 @@ class CategorieController extends Controller
     
             return redirect()->route('categories.index')->with('success', 'Catégorie mise à jour avec succès.');
         }
-      
-        public function destroy(Categorie $categorie)
-            {
-                if ($categorie->livre()->exists()) {
-                    return redirect()->route('categories.index')->with('error', 'Des livres sont liés à cette catégorie. Vous ne pouvez pas la supprimer.');
-                }
-        
-                $categorie->delete();
-        
-                return redirect()->route('categories.index')->with('success', 'Catégorie supprimée avec succès.');
-            }
+    public function destroy($id)
+{
+    $categorie = Categorie::findOrFail($id);
+    $categorie->delete();
+
+    return redirect()->route('categories.index')->with('success', 'Categorie supprimé avec succès');
+}
 
 
 

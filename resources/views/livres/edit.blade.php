@@ -116,7 +116,7 @@
                 <label for="id_rayon">Rayon</label>
                 <select name="id_rayon" id="id_rayon" class="form-control" required>
                     @foreach ($rayons as $rayon)
-                        <option value="{{ $rayon->id }}" {{ $livre->id_rayon == $rayon->id ? 'selected' : '' }}>{{ $rayon->nom }}</option>
+                        <option value="{{ $rayon->id }}" {{ $livre->id_rayon == $rayon->id ? 'selected' : '' }}>{{ $rayon->partie }}</option>
                     @endforeach
                 </select>
             </div>
@@ -124,7 +124,7 @@
                 <label for="id_categorie">Catégorie</label>
                 <select name="id_categorie" id="id_categorie" class="form-control" required>
                     @foreach ($categories as $categorie)
-                        <option value="{{ $categorie->id }}" {{ $livre->id_categorie == $categorie->id ? 'selected' : '' }}>{{ $categorie->nom }}</option>
+                        <option value="{{ $categorie->id }}" {{ $livre->id_categorie == $categorie->id ? 'selected' : '' }}>{{ $categorie->libelle }}</option>
                     @endforeach
                 </select>
             </div>
