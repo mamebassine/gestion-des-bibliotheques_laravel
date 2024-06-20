@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Ajouter un livre</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -90,8 +90,6 @@
     </style>
 </head>
 <body>
-    
-
 @section('content')
     <div class="container">
         <h1>Ajouter un livre</h1>
@@ -125,19 +123,21 @@
                 <label for="editeur">Editeur</label>
                 <input type="text" name="editeur" id="editeur" class="form-control" value="{{ old('editeur') }}" required>
             </div>
+
             <div class="form-group">
                 <label for="id_rayon">Rayon</label>
                 <select name="id_rayon" id="id_rayon" class="form-control" required>
                     @foreach ($rayons as $rayon)
-                        <option value="{{ $rayon->id }}">{{ $rayon->nom }}</option>
+                        <option value="{{ $rayon->id }}">{{ $rayon->libelle }}</option>
                     @endforeach
                 </select>
             </div>
+            
             <div class="form-group">
                 <label for="id_categorie">Catégorie</label>
                 <select name="id_categorie" id="id_categorie" class="form-control" required>
                     @foreach ($categories as $categorie)
-                        <option value="{{ $categorie->id }}">{{ $categorie->nom }}</option>
+                        <option value="{{ $categorie->id }}">{{ $categorie->libelle }}</option>
                     @endforeach
                 </select>
             </div>

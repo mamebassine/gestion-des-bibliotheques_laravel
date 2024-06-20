@@ -173,6 +173,6 @@
     @else
         <p>Aucun rayon n'a été trouvé.</p>
     @endif
-
+    <a href="{{ route('livres.index') }}" class="btn btn-primary">Retour à la liste</a>
 </body>
 </html>

@@ -26,14 +26,12 @@ class LivreController extends Controller
         return view('livres.create', compact('rayons', 'categories'));
     }
 
-    
-
     // Enregistre un nouveau livre
     public function store(Request $request)
     {
         $validated = $request->validate([
             'titre' => 'required|string|max:255',
-            'image' => 'nullable|string|max:255',
+            'image' => 'nullable|string|max:255|url',
             'date_de_publication' => 'required|date',
             'nombre_de_page' => 'required|integer',
             'auteur' => 'required|string|max:255',
@@ -88,5 +86,12 @@ class LivreController extends Controller
         $livre->delete();
 
         return redirect()->route('livres.index')->with('success', 'Livre supprimé avec succès');
+    }
+    //pour la recherche de livre
+public function recherche(Request $request)
+    {
+        $query = $request->input('query');
+        $livres = Livre::where('titre', 'LIKE', "%{$query}%")->get();
+        return view('livres.index', compact('livres'));
     }
 }
