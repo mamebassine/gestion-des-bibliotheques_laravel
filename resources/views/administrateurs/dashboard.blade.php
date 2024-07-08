@@ -21,7 +21,7 @@
             height: 100%;
             top: 0;
             left: 0;
-            background-color: #2f9ffb;
+            background-color: #003366;
             padding-top: 10px; /* Espacement réduit en haut */
             color: white;
             overflow-y: auto; /* Permet le défilement si nécessaire */
@@ -37,7 +37,7 @@
 
         /* Effet au survol des liens de la navbar */
         .navbar-vertical a:hover {
-            background-color: #e9bede;
+            background-color: #0056b3;
         }
 
         /* Style pour le conteneur du contenu principal */
@@ -53,19 +53,22 @@
             justify-content: space-around;
             flex-wrap: wrap;
             margin-top: 40px; /* Espacement accru entre les cartes */
-            margin-top: 120px;
         }
 
         /* Style pour chaque carte */
         .card {
             width: 200px;
-            height: 150px;
+            height: 200px;
             background-color: #ffffff;
-            border-radius: 10px;
+            border-radius: 50%; /* Changement en forme de cercle */
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             margin-bottom: 20px;
             padding: 20px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Style pour le titre de la carte */
@@ -79,14 +82,14 @@
         .percentage {
             font-size: 24px;
             font-weight: bold;
-            color: #007bff; /* Couleur bleue pour les pourcentages */
+            color: #003366; /* Couleur principale */
         }
 
         /* Style pour le bouton Ajouter un livre */
         .btn {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #003366;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -96,17 +99,14 @@
 
         /* Effet au survol du bouton */
         .btn:hover {
-            background-color: #0056b3;
+            background-color: #002244;
         }
 
         /* Style pour le titre principal */
         h1 {
             text-align: center;
             margin-bottom: 30px;
-        }
-        .nav-link1{
-            margin-top: 340px;
-            
+            color: #003366; /* Couleur principale */
         }
     </style>
 </head>
@@ -114,17 +114,14 @@
     <!-- Navbar verticale -->
     <nav class="navbar-vertical">
         <div>
-           <!-- Liens de navigation -->
-           <a class="navbar-brand" href="#">Ma Bibliothèque</a>
-           <a class="nav-link" href="{{ route('livres.index') }}">Accueil</a>
-           <a class="nav-link" href="{{ route('administrateurs.login') }}">Connexion</a>
-           <a class="nav-link" href="{{ route('livres.create') }}">Ajouter un livre</a>
-           <a class="nav-link1" href="{{ route('logout') }}">Deconnexion</a> 
-
-           
-           
-       </div>
-   </nav>
+            <!-- Liens de navigation -->
+            <a class="navbar-brand" href="#">Ma Bibliothèque</a>
+            <a class="nav-link" href="{{ route('livres.index') }}">Accueil</a>
+            <a class="nav-link" href="{{ route('administrateurs.login') }}">Connexion</a>
+            <a class="nav-link" href="{{ route('livres.create') }}">Ajouter un livre</a>
+            <a class="nav-link" href="{{ route('logout') }}">Déconnexion</a>
+        </div>
+    </nav>
 
     <!-- Contenu principal -->
     <div class="content">
@@ -133,21 +130,21 @@
             
             <!-- Conteneur des cartes -->
             <div class="card-container">
-                <!-- Carte Livres lus -->
+                <!-- Carte Livres ajoutés -->
                 <div class="card">
-                    <div class="card-title">Livres lus</div>
+                    <div class="card-title">Livres ajoutés</div>
                     <div class="percentage">75%</div>
                 </div>
     
-                <!-- Carte Livres vendus -->
+                <!-- Carte Catégories -->
                 <div class="card">
-                    <div class="card-title">Livres vendus</div>
+                    <div class="card-title">Catégories</div>
                     <div class="percentage">60%</div>
                 </div>
     
-                <!-- Carte Livres empruntés -->
+                <!-- Carte Rayons -->
                 <div class="card">
-                    <div class="card-title">Livres empruntés</div>
+                    <div class="card-title">Rayons</div>
                     <div class="percentage">85%</div>
                 </div>
     
@@ -157,7 +154,7 @@
                     <div class="percentage">45%</div>
                 </div>
             </div>
-    </section>
+        </section>
     </div>
 </body>
 </html>

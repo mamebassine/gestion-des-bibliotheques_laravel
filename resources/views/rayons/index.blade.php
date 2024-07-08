@@ -1,42 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Liste des rayons</h1>
-    
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    <a href="{{ route('rayons.create') }}" class="btn btn-primary mb-3">Ajouter un rayon</a>
-
-    @if ($rayons->count() > 0)
-        <ul class="list-group">
-            @foreach ($rayons as $rayon)
-                <li class="list-group-item">
-                    {{ $rayon->libelle }} - {{ $rayon->partie }}
-                    <a href="{{ route('rayons.edit', $rayon) }}" class="btn btn-sm btn-outline-primary float-right mr-2">Modifier</a>
-                    <form action="{{ route('rayons.destroy', $rayon) }}" method="POST" class="float-right">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce rayon ?')">Supprimer</button>
-                    </form>
-                </li>
-            @endforeach
-        </ul>
-    @else
-        <p>Aucun rayon n'a été trouvé.</p>
-    @endif
-
-</body>
-</html> --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,13 +29,13 @@
         }
 
         .btn-primary {
-            background-color: #007bff;
+            background-color: #003366;
             color: white;
             border: none;
         }
 
         .btn-primary:hover {
-            background-color: #0056b3;
+            background-color: #002244;
         }
 
         .btn-outline-primary, .btn-outline-danger {
@@ -85,12 +46,12 @@
         }
 
         .btn-outline-primary {
-            border-color: #007bff;
-            color: #007bff;
+            border-color: #003366;
+            color: #003366;
         }
 
         .btn-outline-primary:hover {
-            background-color: #007bff;
+            background-color: #003366;
             color: white;
         }
 
