@@ -42,7 +42,7 @@
         .form-container button {
             width: 100%;
             padding: 10px;
-            background-color: #007bff;
+            background-color: #003366;
             border: none;
             border-radius: 4px;
             color: #fff;
@@ -50,13 +50,13 @@
             cursor: pointer;
         }
         .form-container button:hover {
-            background-color: #0056b3;
+            background-color: #002244;
         }
         .form-container p {
             text-align: center;
         }
         .form-container p a {
-            color: #007bff;
+            color: #003366;
             text-decoration: none;
         }
         .form-container p a:hover {

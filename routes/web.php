@@ -8,13 +8,21 @@ use App\Http\Controllers\RayonController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\DashboardController;
 
+// Routes pour la gestion des livres
+
+Route::get('/', [LivreController::class, 'index'])->name('livres.index'); // Affiche la liste des livres
+Route::get('/livres', [LivreController::class, 'index'])->name('livres.index'); // Affiche la liste des livres
+Route::get('/livres/create', [LivreController::class, 'create'])->name('livres.create'); // Affiche le formulaire de création d'un livre
+Route::post('/livres', [LivreController::class, 'store'])->name('livres.store'); // Enregistre un nouveau livre
+Route::get('/livres/{livre}', [LivreController::class, 'show'])->name('livres.show'); // Affiche les détails d'un livre spécifique
+Route::get('/livres/{livre}/edit', [LivreController::class, 'edit'])->name('livres.edit'); // Affiche le formulaire d'édition d'un livre
+Route::put('/livres/{livre}', [LivreController::class, 'update'])->name('livres.update'); // Met à jour un livre existant
+Route::delete('/livres/{livre}', [LivreController::class, 'destroy'])->name('livres.destroy'); // Supprime un livre
 
 
+Route::get('livres/recherche', [LivreController::class, 'recherche'])->name('livres.recherche');
 
-// Route pour la page d'accueil
-Route::get('/', function () {
-    return view('welcome'); // Retourne la vue 'welcome'
-});
+
 
 // Routes pour la gestion des catégories
 Route::get('/categories', [CategorieController::class, 'index'])->name('categories.index'); // Route pour afficher la liste des catégories
@@ -36,17 +44,6 @@ Route::put('/rayons/{rayon}', [RayonController::class, 'update'])->name('rayons.
 
 Route::delete('/rayons/{id}', [RayonController::class, 'destroy'])->name('rayons.destroy'); // Route pour supprimer un rayon
 Route::get('/rayons/{rayon}/delete', [RayonController::class, 'delete'])->name('rayons.delete'); // Route pour afficher la confirmation de suppression d'un rayon
-
-
-
-// Routes pour la gestion des livres
-Route::get('/livres', [LivreController::class, 'index'])->name('livres.index'); // Affiche la liste des livres
-Route::get('/livres/create', [LivreController::class, 'create'])->name('livres.create'); // Affiche le formulaire de création d'un livre
-Route::post('/livres', [LivreController::class, 'store'])->name('livres.store'); // Enregistre un nouveau livre
-Route::get('/livres/{livre}', [LivreController::class, 'show'])->name('livres.show'); // Affiche les détails d'un livre spécifique
-Route::get('/livres/{livre}/edit', [LivreController::class, 'edit'])->name('livres.edit'); // Affiche le formulaire d'édition d'un livre
-Route::put('/livres/{livre}', [LivreController::class, 'update'])->name('livres.update'); // Met à jour un livre existant
-Route::delete('/livres/{livre}', [LivreController::class, 'destroy'])->name('livres.destroy'); // Supprime un livre
 
 // AUTHENTIFICATIONS
 

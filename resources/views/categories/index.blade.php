@@ -29,13 +29,13 @@
         }
 
         .btn-primary {
-            background-color: #007bff;
+            background-color: #003366;
             color: white;
             border: none;
         }
 
         .btn-primary:hover {
-            background-color: #0056b3;
+            background-color: #002244;
         }
 
         .btn-outline-primary, .btn-outline-danger {
@@ -46,12 +46,12 @@
         }
 
         .btn-outline-primary {
-            border-color: #007bff;
-            color: #007bff;
+            border-color: #003366;
+            color: #003366;
         }
 
         .btn-outline-primary:hover {
-            background-color: #007bff;
+            background-color: #003366;
             color: white;
         }
 
@@ -91,12 +91,9 @@
         }
 
         .actions {
-            margin-top: auto; /* Espacement en haut automatique */
-            display: flex; /* Utiliser Flexbox */
-            justify-content: space-between; /* Espacement entre les boutons */
-            border-radius: 4px; /* Bordure arrondie */
-            
-           
+            display: flex;
+            justify-content: space-between;
+            border-radius: 4px;
         }
     </style>
 </head>

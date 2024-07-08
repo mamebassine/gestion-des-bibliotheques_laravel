@@ -57,25 +57,22 @@ class AdministrateurController extends Controller
         }
 // Authentification échouée, rediriger avec un message d'erreur
     return redirect('/')->with('error', 'Adresse email ou mot de passe incorrect.');
-
-        
-    }
-    public function logout()
+}
+public function logout()
     {
         Auth::logout();
         return redirect()->route('livres.index'); // Redirige vers la page d'accueil après la déconnexion
     }
 
+    public function dashboard()
+    {
+        
+return view('administrateurs.dashboard'); // Ensure you have this view created
+    }
+
     
 
-
-
-
-
-
-
-
-    // public function logout(Request $request)
+// public function logout(Request $request)
     // {
     //     Auth::logout();
     //     $request->session()->invalidate();
@@ -83,15 +80,6 @@ class AdministrateurController extends Controller
 
     //     return redirect('/')->with('success', 'Vous êtes déconnecté.');
     // }
-
-
-    public function dashboard()
-    {
-        
-    
-return view('administrateurs.dashboard'); // Ensure you have this view created
-    }
-
 }
 
 

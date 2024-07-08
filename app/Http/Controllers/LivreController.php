@@ -14,6 +14,8 @@ class LivreController extends Controller
     // Affiche la liste des livres
     public function index()
     {
+                $livres = Livre::all(); // Récupère tous les livres depuis la base de données
+
         $livres = Livre::with('rayon', 'categorie')->get();
         return view('livres.index', compact('livres'));
     }
@@ -91,7 +93,23 @@ class LivreController extends Controller
 public function recherche(Request $request)
     {
         $query = $request->input('query');
-        $livres = Livre::where('titre', 'LIKE', "%{$query}%")->get();
+        $livres = Livre::where('titre', 'LIKE', "%{$query}%")
+          ->orWhere('isbn', 'like', "%$query%")
+        ->get();
         return view('livres.index', compact('livres'));
     }
+
+
+//  // Recherche de livres
+//     public function recherche(Request $request)
+//     {
+//         $query = $request->input('query');
+//         $livres = Livre::where('titre', 'like', "%$query%")
+//             ->orWhere('auteur', 'like', "%$query%")
+//             ->orWhere('isbn', 'like', "%$query%")
+//             ->with('rayon', 'categorie')
+//             ->get();
+
+//         return view('livres.index', compact('livres'));
+//     }
 }

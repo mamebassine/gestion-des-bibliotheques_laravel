@@ -25,6 +25,26 @@
         .form-container h1 {
             margin-bottom: 20px;
         }
+        .form-control {
+            border-color: #003366;
+        }
+        .btn-primary {
+            background-color: #003366;
+            border-color: #003366;
+        }
+        .btn-primary:hover {
+            background-color: #002244;
+            border-color: #002244;
+        }
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
