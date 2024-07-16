@@ -222,9 +222,9 @@
 </head>
 <body>
     <header>
-        <div class="logo">
+        {{-- <div class="logo">
             <img src="path/to/your/logo.png" alt="Logo">
-        </div>
+        </div> --}}
         <nav>
             <a href="{{ route('livres.index') }}">Accueil</a>
             <a href="{{ route('categories.index') }}">Catégories</a>
