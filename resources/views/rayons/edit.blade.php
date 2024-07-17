@@ -49,22 +49,22 @@
             text-align: center;
             vertical-align: middle;
             cursor: pointer;
-            background-color: #007bff;
-            border: 1px solid #007bff;
+            background-color: #003366;
+            border: 1px solid #003366;
             padding: 10px 20px;
             font-size: 16px;
             border-radius: 4px;
             text-decoration: none;
         }
-        .btn:hover {
+        /* .btn:hover {
             background-color: #0056b3;
             border-color: #004085;
-        }
+        } */
         .link {
             display: block;
             margin-bottom: 20px;
             text-align: center;
-            color: #007bff;
+            color: #003366;
             text-decoration: none;
         }
         .link:hover {
